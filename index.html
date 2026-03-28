@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -410,6 +411,36 @@
       .skills-grid { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── TECH RAIN ── */
+    #tech-rain {
+      position: fixed;
+      right: 0; top: 0;
+      width: 200px; height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+    }
+    @media (max-width: 1200px) { #tech-rain { display: none; } }
+
+    .t-icon {
+      position: absolute;
+      top: 0; left: 0;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px;
+      will-change: transform;
+      transition: opacity 0.4s;
+    }
+    .t-icon i { font-size: 28px; }
+    .t-icon span {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      color: var(--green);
+      opacity: 0.75;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -616,47 +647,47 @@
           <ul class="sk-list">
             <li>JavaScript</li><li>TypeScript</li>
             <li>Python</li><li>Go</li>
-            <li>C++</li><li>HTML / CSS</li>
+            <li>Rust</li><li>C++</li><li>HTML / CSS</li>
           </ul>
         </div>
         <div>
-          <p class="sk-cat-name">Frontend</p>
+          <p class="sk-cat-name">Frameworks</p>
           <ul class="sk-list">
             <li>React.js</li><li>Next.js</li>
-            <li>Angular</li><li>Tailwind CSS</li>
-            <li>Redux / Zustand</li><li>Shadcn / MUI</li>
+            <li>Angular</li><li>Node.js</li>
+            <li>NestJS</li><li>FastAPI</li><li>LangChain</li>
           </ul>
         </div>
         <div>
-          <p class="sk-cat-name">Backend</p>
+          <p class="sk-cat-name">AI &amp; ML</p>
           <ul class="sk-list">
-            <li>Node.js</li><li>NestJS</li>
-            <li>Express.js</li><li>FastAPI</li>
-            <li>REST APIs</li>
-          </ul>
-        </div>
-        <div>
-          <p class="sk-cat-name">AI / Data</p>
-          <ul class="sk-list">
-            <li>LLM / Ollama</li><li>RAG</li>
-            <li>Gemini API</li><li>PGVector</li>
-            <li>Data Analytics</li>
+            <li>HuggingFace Transformers</li><li>Sentence-Transformers</li>
+            <li>PEFT</li><li>OpenAI SDK</li>
+            <li>Ollama</li><li>LangGraph</li>
           </ul>
         </div>
         <div>
           <p class="sk-cat-name">Databases</p>
           <ul class="sk-list">
-            <li>PostgreSQL</li><li>MongoDB</li>
-            <li>MySQL</li><li>SQLite</li>
-            <li>Neo4j</li><li>Vector DBs</li>
+            <li>PostgreSQL</li><li>MySQL</li>
+            <li>MongoDB</li><li>Redis</li>
+            <li>PGVector</li><li>Neo4j</li>
           </ul>
         </div>
         <div>
-          <p class="sk-cat-name">DevOps / Cloud</p>
+          <p class="sk-cat-name">Infra</p>
           <ul class="sk-list">
-            <li>Docker</li><li>Nginx</li>
-            <li>Git</li><li>Firebase</li>
-            <li>Vercel</li><li>Railway</li>
+            <li>Docker</li><li>Kubernetes</li>
+            <li>Kafka</li><li>RabbitMQ</li>
+            <li>Nginx</li><li>Caddy</li><li>CI/CD</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">Architecture</p>
+          <ul class="sk-list">
+            <li>RAG Pipelines</li><li>Agentic Workflows</li>
+            <li>Prompt Engineering</li><li>Fine-Tuning</li>
+            <li>System Design</li>
           </ul>
         </div>
       </div>
@@ -710,6 +741,8 @@
   </main>
 </div>
 
+<div id="tech-rain"></div>
+
 <footer>
   <p>Designed &amp; built by <a href="https://github.com/ipushpie" target="_blank" rel="noopener">Pushpender Sharma</a></p>
 </footer>
@@ -748,6 +781,116 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // Tech icon rain
+  (function() {
+    const allIcons = [
+      { cls: 'devicon-react-original colored',                   name: 'React'      },
+      { cls: 'devicon-typescript-plain colored',                 name: 'TypeScript' },
+      { cls: 'devicon-python-plain colored',                     name: 'Python'     },
+      { cls: 'devicon-go-plain colored',                         name: 'Go'         },
+      { cls: 'devicon-rust-original',                            name: 'Rust'       },
+      { cls: 'devicon-nodejs-plain colored',                     name: 'Node.js'    },
+      { cls: 'devicon-nestjs-plain colored',                     name: 'NestJS'     },
+      { cls: 'devicon-express-original',                         name: 'Express'    },
+      { cls: 'devicon-fastapi-plain colored',                    name: 'FastAPI'    },
+      { cls: 'devicon-nextjs-plain',                             name: 'Next.js'    },
+      { cls: 'devicon-angular-plain colored',                    name: 'Angular'    },
+      { cls: 'devicon-tailwindcss-plain colored',                name: 'Tailwind'   },
+      { cls: 'devicon-redux-original colored',                   name: 'Redux'      },
+      { cls: 'devicon-docker-plain colored',                     name: 'Docker'     },
+      { cls: 'devicon-kubernetes-plain colored',                 name: 'K8s'        },
+      { cls: 'devicon-apachekafka-plain',                        name: 'Kafka'      },
+      { cls: 'devicon-nginx-original colored',                   name: 'Nginx'      },
+      { cls: 'devicon-git-plain colored',                        name: 'Git'        },
+      { cls: 'devicon-postgresql-plain colored',                 name: 'PostgreSQL' },
+      { cls: 'devicon-mysql-plain colored',                      name: 'MySQL'      },
+      { cls: 'devicon-mongodb-plain colored',                    name: 'MongoDB'    },
+      { cls: 'devicon-redis-plain colored',                      name: 'Redis'      },
+      { cls: 'devicon-sqlite-plain colored',                     name: 'SQLite'     },
+      { cls: 'devicon-neo4j-plain colored',                      name: 'Neo4j'      },
+      { cls: 'devicon-amazonwebservices-plain-wordmark colored', name: 'AWS'        },
+      { cls: 'devicon-googlecloud-plain colored',                name: 'GCP'        },
+      { cls: 'devicon-firebase-plain colored',                   name: 'Firebase'   },
+      { cls: 'devicon-vercel-plain',                             name: 'Vercel'     },
+    ];
+
+    const rain = document.getElementById('tech-rain');
+    if (!rain) return;
+
+    const W  = rain.offsetWidth;
+    const H  = window.innerHeight;
+    const R  = 20; // collision radius
+    const rand = (a, b) => Math.random() * (b - a) + a;
+
+    // Spawn icons staggered vertically so screen fills immediately
+    const particles = allIcons.map((tech, i) => {
+      const el = document.createElement('div');
+      el.className = 't-icon';
+      el.innerHTML = `<i class="${tech.cls}"></i><span>${tech.name}</span>`;
+      rain.appendChild(el);
+      return {
+        el,
+        x:  rand(8, W - 55),
+        y:  -70 - (H / allIcons.length) * i, // staggered above viewport
+        vx: rand(-0.5, 0.5),
+        vy: rand(0.7, 1.6),
+      };
+    });
+
+    function tick() {
+      const n = particles.length;
+
+      for (let i = 0; i < n; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wall bounce
+        if (p.x < 5)      { p.x = 5;      p.vx =  Math.abs(p.vx) + 0.1; }
+        if (p.x > W - 55) { p.x = W - 55; p.vx = -Math.abs(p.vx) - 0.1; }
+
+        // Wrap bottom → top
+        if (p.y > H + 70) {
+          p.y  = -70;
+          p.x  = rand(8, W - 55);
+          p.vx = rand(-0.5, 0.5);
+          p.vy = rand(0.7, 1.6);
+        }
+
+        // Elastic collisions with every other particle
+        for (let j = i + 1; j < n; j++) {
+          const q  = particles[j];
+          const dx = q.x - p.x;
+          const dy = q.y - p.y;
+          const d2 = dx * dx + dy * dy;
+          const md = R * 2;
+          if (d2 < md * md && d2 > 0.01) {
+            const d  = Math.sqrt(d2);
+            const nx = dx / d, ny = dy / d;
+            // Separate overlapping icons
+            const sep = (md - d) * 0.5;
+            p.x -= nx * sep; p.y -= ny * sep;
+            q.x += nx * sep; q.y += ny * sep;
+            // Exchange velocity along collision normal
+            const imp = (p.vx - q.vx) * nx + (p.vy - q.vy) * ny;
+            p.vx -= imp * nx; p.vy -= imp * ny;
+            q.vx += imp * nx; q.vy += imp * ny;
+          }
+        }
+
+        // Clamp: always drifting down, cap horizontal speed
+        p.vx = Math.max(-2, Math.min(2, p.vx));
+        p.vy = Math.max(0.5, Math.min(2.5, p.vy));
+
+        p.el.style.transform = `translate(${p.x}px,${p.y}px)`;
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  })();
 
   // Mobile menu
   const ham = document.getElementById('ham');
