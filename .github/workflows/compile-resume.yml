@@ -1,0 +1,31 @@
+name: Compile Resume PDF
+
+on:
+  push:
+    paths:
+      - 'resume.tex'
+      - 'resume.cls'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_lualatex: false
+          latexmk_use_xelatex: false
+
+      - name: Rename PDF
+        run: mv resume.pdf Pushpender_resume.pdf
+
+      - name: Commit PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: update compiled resume PDF"
+          file_pattern: Pushpender_resume.pdf
