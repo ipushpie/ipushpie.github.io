@@ -1,177 +1,758 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐱 Hire me!</title>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pushpender Sharma — Senior Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer specializing in AI-driven platforms, LLM systems, and enterprise full-stack development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-body {
-    margin: 0; padding: 0;
-    font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    color: #333; text-align: center;
-    overflow-x: hidden; overflow-y: auto;
-}
+    :root {
+      --navy:       #0a192f;
+      --light-navy: #112240;
+      --navy-3:     #233554;
+      --slate:      #8892b0;
+      --light-slate:#a8b2d8;
+      --white-slate:#ccd6f6;
+      --white:      #e6f1ff;
+      --green:      #64ffda;
+      --green-tint: rgba(100,255,218,0.08);
+      --font:       'Inter', sans-serif;
+      --mono:       'JetBrains Mono', monospace;
+      --ease:       cubic-bezier(0.645,0.045,0.355,1);
+    }
 
-header {
-    padding: 2rem 1rem;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-}
+    html { scroll-behavior: smooth; }
 
-header h1 {
-    font-family: 'Bangers', cursive;
-    font-size: 3.5rem; color: #d6336c;
-    margin: 0; letter-spacing: 2px; text-shadow: 2px 2px #f8f9fa;
-}
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--slate);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-header p {
-    font-size: 1.2rem; margin-top: 0.5rem; color: #555;
-}
+    /* Cursor spotlight */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        600px circle at var(--cx, -999px) var(--cy, -999px),
+        rgba(100,255,218,0.045),
+        transparent 40%
+      );
+    }
 
-/* Resume Container */
-.resume-wrapper {
-    position: relative;
-    width: 100%; max-width: 900px;
-    margin: 2rem auto;
-}
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--navy-3); border-radius: 4px; }
 
-.resume-container {
-    width: 100%; height: 90vh;
-    border: 8px solid #343a40;
-    border-radius: 15px; background: #fff;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    overflow: hidden; position: relative; z-index: 2;
-}
+    a { text-decoration: none; color: inherit; }
+    strong { color: var(--white-slate); font-weight: 500; }
 
-embed { width: 100%; height: 100%; border: none; }
+    /* ── LAYOUT ── */
+    .wrap {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-/* Floating Meme & Cat Stickers */
-.sticker {
-    position: absolute;
-    width: 100px; height: 100px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 1;
-    animation: float 6s ease-in-out infinite;
-}
+    /* ── SIDEBAR ── */
+    aside {
+      position: fixed;
+      top: 0; left: 0;
+      width: 370px; height: 100vh;
+      padding: 5rem 2.75rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      z-index: 10;
+    }
 
-.sticker img {
-    width: 100%; height: 100%; object-fit: cover;
-}
+    .s-name {
+      font-size: 2rem; font-weight: 800;
+      color: var(--white); line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .s-title {
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--white-slate);
+      margin-bottom: 0.9rem;
+    }
+    .s-tagline {
+      font-size: 0.82rem;
+      color: var(--slate);
+      line-height: 1.65;
+      max-width: 240px;
+      margin-bottom: 3rem;
+    }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
-}
+    /* Nav */
+    .s-nav { list-style: none; }
+    .s-nav li { margin-bottom: 0.15rem; }
+    .s-nav a {
+      display: flex; align-items: center; gap: 0.85rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 0.35rem 0;
+      transition: all 0.2s var(--ease);
+    }
+    .s-nav a .line {
+      display: block; width: 28px; height: 1px;
+      background: var(--slate);
+      transition: all 0.2s var(--ease);
+    }
+    .s-nav a:hover { color: var(--white-slate); }
+    .s-nav a:hover .line { width: 60px; background: var(--white-slate); }
+    .s-nav a.on { color: var(--green); }
+    .s-nav a.on .line { width: 60px; background: var(--green); }
 
-/* Meme Cards */
-.fun-zone {
-    margin-top: 4rem; padding-top: 2rem; border-top: 3px dashed #d6336c;
-}
+    /* Bottom */
+    .s-socials { display: flex; gap: 1.1rem; margin-bottom: 1.5rem; }
+    .s-social {
+      color: var(--slate);
+      transition: all 0.2s var(--ease);
+    }
+    .s-social:hover { color: var(--green); transform: translateY(-3px); }
 
-.fun-zone h2 {
-    font-family: 'Bangers', cursive;
-    font-size: 3rem; color: #d6336c; letter-spacing: 2px;
-}
+    .s-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.76rem; letter-spacing: 0.08em;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 3px;
+      padding: 0.65rem 1.3rem;
+      transition: all 0.2s var(--ease);
+    }
+    .s-btn:hover { background: var(--green-tint); transform: translateY(-2px); }
 
-.meme-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; max-width: 1200px; margin: 2rem auto;
-}
+    /* ── CONTENT ── */
+    main {
+      margin-left: 370px;
+      padding: 5rem 5.5rem 8rem 4rem;
+      max-width: 740px;
+      position: relative; z-index: 1;
+    }
 
-.meme-card {
-    background: #fff; padding: 1.5rem; border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-.meme-card:hover { transform: translateY(-10px); }
-.meme-card h3 {
-    font-family: 'Bangers', cursive;
-    font-size: 1.8rem; color: #343a40; margin-bottom: 1rem;
-}
-.meme-card img {
-    max-width: 100%; border-radius: 10px;
-}
-.joke-text {
-    font-size: 1.1rem; line-height: 1.6; min-height: 150px;
-    display: flex; align-items: center; justify-content: center;
-}
+    section { margin-bottom: 7rem; scroll-margin-top: 5rem; }
 
-.download-link {
-    display: inline-block; padding: 1rem 2.5rem; margin: 1rem 0;
-    background: #28a745; color: #fff; border-radius: 50px; text-decoration: none;
-    font-weight: 700; font-size: 1.2rem;
-    box-shadow: 0 4px 15px rgba(40,167,69,0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.download-link:hover {
-    transform: scale(1.1) rotate(2deg);
-    box-shadow: 0 8px 25px rgba(40,167,69,0.6);
-}
+    .sh {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .sh-num {
+      font-family: var(--mono);
+      font-size: 0.82rem; font-weight: 400;
+      color: var(--green);
+    }
+    .sh-title {
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white-slate);
+      white-space: nowrap;
+    }
+    .sh::after {
+      content: ''; display: block;
+      height: 1px; width: 100%;
+      background: var(--light-navy);
+    }
 
-footer {
-    margin-top: 3rem; padding: 2rem 0;
-    background: #343a40; color: #f8f9fa;
-}
-</style>
+    /* ── ABOUT ── */
+    .about-text p {
+      font-size: 0.94rem; line-height: 1.85;
+      margin-bottom: 0.85rem;
+    }
+    .about-quote {
+      margin: 1.75rem 0;
+      padding: 0.6rem 0 0.6rem 1.25rem;
+      border-left: 2px solid var(--green);
+      color: var(--light-slate);
+      font-style: italic;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .about-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      list-style: none; gap: 0.2rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .about-list li {
+      font-family: var(--mono); font-size: 0.76rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .about-list li::before { content: '▹'; color: var(--green); flex-shrink: 0; }
+
+    /* ── EXPERIENCE TABS ── */
+    .exp-wrap { display: flex; gap: 2.5rem; }
+
+    .exp-tablist {
+      display: flex; flex-direction: column;
+      border-left: 2px solid var(--light-navy);
+      min-width: 120px;
+    }
+    .exp-tab {
+      font-family: var(--mono); font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--slate); background: none; border: none;
+      text-align: left; cursor: pointer;
+      padding: 0.7rem 1.2rem;
+      border-left: 2px solid transparent;
+      margin-left: -2px;
+      white-space: nowrap;
+      transition: all 0.2s var(--ease);
+    }
+    .exp-tab:hover { color: var(--green); background: var(--green-tint); }
+    .exp-tab.on {
+      color: var(--green);
+      border-left-color: var(--green);
+      background: var(--green-tint);
+    }
+
+    .exp-panel { display: none; }
+    .exp-panel.on { display: block; }
+
+    .exp-role {
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--white-slate);
+      margin-bottom: 0.15rem;
+    }
+    .exp-role a { color: var(--green); }
+    .exp-role a:hover { text-decoration: underline; }
+    .exp-period {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--slate); margin-bottom: 1.25rem;
+      letter-spacing: 0.03em;
+    }
+
+    .exp-bullets { list-style: none; margin-bottom: 1.25rem; }
+    .exp-bullets li {
+      position: relative; padding-left: 1.25rem;
+      font-size: 0.88rem; line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .exp-bullets li::before {
+      content: '▹'; position: absolute; left: 0;
+      color: var(--green); font-size: 0.8rem;
+    }
+
+    /* Project cards inside experience */
+    .exp-proj {
+      margin-bottom: 1rem;
+      padding: 1rem 1.15rem;
+      background: var(--light-navy);
+      border-radius: 4px;
+      border: 1px solid var(--navy-3);
+      transition: border-color 0.2s var(--ease);
+    }
+    .exp-proj:hover { border-color: var(--green); }
+    .exp-proj-name {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.45rem;
+    }
+    .exp-proj-desc {
+      font-size: 0.845rem; line-height: 1.7;
+      color: var(--slate);
+    }
+    .exp-proj-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem;
+    }
+    .tag {
+      font-family: var(--mono); font-size: 0.67rem;
+      color: var(--green); background: var(--green-tint);
+      padding: 0.15rem 0.55rem; border-radius: 2px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .sk-cat-name {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.75rem;
+    }
+    .sk-list { list-style: none; }
+    .sk-list li {
+      font-family: var(--mono); font-size: 0.77rem;
+      color: var(--slate);
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .sk-list li::before { content: '▹'; color: var(--green); font-size: 0.65rem; }
+
+    /* ── EDUCATION ── */
+    .edu-item { margin-bottom: 2.25rem; }
+    .edu-school {
+      font-size: 0.98rem; font-weight: 600;
+      color: var(--white-slate); margin-bottom: 0.15rem;
+    }
+    .edu-deg { font-size: 0.875rem; color: var(--light-slate); margin-bottom: 0.15rem; }
+    .edu-period {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--slate); margin-bottom: 0.4rem;
+    }
+    .edu-note { font-size: 0.84rem; }
+
+    .sub-head {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.9rem;
+    }
+
+    .ach-item {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    .ach-item::before {
+      content: '★'; color: var(--green);
+      font-size: 0.65rem; margin-top: 0.3rem; flex-shrink: 0;
+    }
+    .ach-item div strong {
+      color: var(--white-slate); display: block;
+      margin-bottom: 0.15rem; font-size: 0.88rem;
+    }
+    .ach-item div p { font-size: 0.83rem; }
+
+    .certs-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .cert {
+      font-family: var(--mono); font-size: 0.75rem;
+      color: var(--slate);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .cert::before { content: '▹'; color: var(--green); flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-left: 370px;
+      padding: 1.5rem 5.5rem 2.5rem 4rem;
+      border-top: 1px solid var(--light-navy);
+      position: relative; z-index: 1;
+    }
+    footer p {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--slate); text-align: center;
+    }
+    footer a { color: var(--green); transition: 0.2s; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MOBILE NAV ── */
+    .mob-nav {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.1rem 1.5rem;
+      background: rgba(10,25,47,0.9);
+      backdrop-filter: blur(12px);
+      align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--light-navy);
+    }
+    .mob-logo {
+      font-family: var(--mono); font-size: 1rem; font-weight: 700;
+      color: var(--green);
+    }
+    .ham {
+      display: flex; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .ham span { display: block; width: 22px; height: 1.5px; background: var(--green); border-radius: 2px; transition: 0.2s; }
+
+    .mob-drawer {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--light-navy);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem;
+    }
+    .mob-drawer.open { display: flex; }
+    .mob-drawer a {
+      font-family: var(--mono); font-size: 1.1rem;
+      color: var(--white-slate); transition: 0.2s;
+    }
+    .mob-drawer a:hover { color: var(--green); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+      .mob-nav { display: flex; }
+      aside { display: none; }
+      main { margin-left: 0; padding: 5rem 1.75rem 4rem; max-width: 100%; }
+      footer { margin-left: 0; padding: 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .exp-wrap { flex-direction: column; gap: 1.25rem; }
+      .exp-tablist {
+        flex-direction: row; border-left: none;
+        border-bottom: 2px solid var(--light-navy);
+        overflow-x: auto; min-width: 0;
+      }
+      .exp-tab {
+        border-left: none; border-bottom: 2px solid transparent;
+        margin-left: 0; margin-bottom: -2px; flex-shrink: 0;
+      }
+      .exp-tab.on { border-left: none; border-bottom-color: var(--green); }
+      .about-list { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>BEHOLD! My Resume</h1>
-    <p>Hire me, maybe? My skills are less buggy than this page.</p>
-</header>
-
-<div class="resume-wrapper">
-    <!-- Original + New Floating Stickers -->
-    <div class="sticker" style="top:-50px; left:-50px;"><img src="https://i.imgflip.com/2xscjb.jpg" alt="This is fine"></div>
-    <div class="sticker" style="top:50%; left:-80px;"><img src="https://i.imgur.com/ygn2a2j.jpeg" alt="Stack Overflow love"></div>
-    <div class="sticker" style="top:10%; right:-70px;"><img src="https://i.imgflip.com/1ur9b0.jpg" alt="Distracted JS meme"></div>
-    <div class="sticker" style="bottom:-50px; right:-50px;"><img src="https://media.giphy.com/media/l1J9R6pMglXcQfG4U/giphy.gif" alt="It works on my machine"></div>
-
-    <!-- NEW Stickers -->
-    <div class="sticker" style="top:20%; left:-120px;"><img src="https://cdn2.thecatapi.com/images/MTY3ODIyMQ.gif" alt="Cat Debugging"></div>
-    <div class="sticker" style="top:70%; left:-100px;"><img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Typing Cat"></div>
-    <div class="sticker" style="bottom:30%; right:-120px;"><img src="https://i.imgur.com/Oj1iG0M.jpeg" alt="404 Cat"></div>
-    <div class="sticker" style="top:80%; right:-100px;"><img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="Angry Debugging Cat"></div>
-    <div class="sticker" style="top:0; left:calc(100% + 50px);"><img src="https://i.imgflip.com/30zz5g.jpg" alt="Code Review meme"></div>
-    <div class="sticker" style="bottom:10%; left:calc(100% + 80px);"><img src="https://media.giphy.com/media/5xaOcLDE64VMFfAhvPq/giphy.gif" alt="Cat with Coffee"></div>
-
-    <!-- Actual Resume -->
-    <div class="resume-container">
-        <embed src="Pushpender_resume.pdf" type="application/pdf">
-    </div>
+<!-- Mobile nav -->
+<nav class="mob-nav">
+  <span class="mob-logo">PS</span>
+  <button class="ham" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-drawer" id="drawer">
+  <a href="#about"      class="dl">About</a>
+  <a href="#experience" class="dl">Experience</a>
+  <a href="#skills"     class="dl">Skills</a>
+  <a href="#education"  class="dl">Education</a>
+  <a href="Pushpender_resume.pdf" download class="s-btn">Resume ↓</a>
 </div>
 
-<a class="download-link" href="Pushpender_resume.pdf" download>SMASH TO DOWNLOAD (PDF)</a>
+<div class="wrap">
 
-<div class="fun-zone">
-    <h2>A Live Look at My Development Process</h2>
-    <div class="meme-grid">
-        <div class="meme-card">
-            <h3>Actual footage of me debugging</h3>
-            <img src="https://media.giphy.com/media/l2JJiA3A74yM2wDig/giphy.gif" alt="Hacker typing fast GIF">
-        </div>
-        <div class="meme-card">
-            <h3>A Programmer's Logic</h3>
-            <div class="joke-text">
-                <p>A programmer's partner says: "Go to the store and get a loaf of bread. If they have eggs, get a dozen."<br><br>The programmer returns with 12 loaves of bread.</p>
-            </div>
-        </div>
-        <div class="meme-card">
-            <h3>Why Programmers Love Dark Mode</h3>
-            <div class="joke-text"><p>Because light attracts bugs.</p></div>
-        </div>
+  <!-- SIDEBAR -->
+  <aside>
+    <div>
+      <h1 class="s-name">Pushpender<br>Sharma</h1>
+      <p class="s-title">Senior Software Engineer</p>
+      <p class="s-tagline">I build AI-powered systems that scale — from LLM microservices to enterprise compliance platforms.</p>
+      <nav>
+        <ul class="s-nav">
+          <li><a href="#about"      class="nav-l on" data-s="about">      <span class="line"></span> About</a></li>
+          <li><a href="#experience" class="nav-l"    data-s="experience"> <span class="line"></span> Experience</a></li>
+          <li><a href="#skills"     class="nav-l"    data-s="skills">     <span class="line"></span> Skills</a></li>
+          <li><a href="#education"  class="nav-l"    data-s="education">  <span class="line"></span> Education</a></li>
+        </ul>
+      </nav>
     </div>
+    <div>
+      <div class="s-socials">
+        <a href="https://github.com/ipushpie" target="_blank" rel="noopener" class="s-social" aria-label="GitHub">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/pushpendersharma" target="_blank" rel="noopener" class="s-social" aria-label="LinkedIn">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:pushpendersharma2019@gmail.com" class="s-social" aria-label="Email">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+      <a href="Pushpender_resume.pdf" download class="s-btn">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Resume
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="sh">
+        <span class="sh-num">01.</span>
+        <h2 class="sh-title">About</h2>
+      </div>
+      <div class="about-text">
+        <p>I'm a <strong>Senior Software Engineer</strong> based in Delhi, India, with 3+ years of experience building AI-driven, enterprise-grade systems across SaaS and on-prem deployments.</p>
+        <p>I specialize in designing and shipping <strong>LLM-powered automation</strong>, scalable full-stack platforms, and privacy-first compliance solutions — all used in real production environments with measurable business impact.</p>
+        <blockquote class="about-quote">
+          "In a time where AI can generate code in seconds, I believe engineering is less about syntax and more about systems thinking, trade-offs, and knowing when to build, refactor, or automate. Tools evolve — fundamentals and judgment don't."
+        </blockquote>
+        <p>I care about building systems that scale, perform, and last. I bring <strong>clarity under pressure</strong> and a strong sense of ownership — focused on solving the right problems, not just shipping features.</p>
+        <p style="margin-top:1.25rem;margin-bottom:0.5rem;color:var(--light-slate);font-size:0.9rem;">A few things I work on:</p>
+        <ul class="about-list">
+          <li>AI &amp; LLM systems</li>
+          <li>Full-stack development</li>
+          <li>RAG &amp; vector databases</li>
+          <li>SaaS &amp; on-prem architectures</li>
+          <li>Privacy &amp; compliance platforms</li>
+          <li>System design &amp; performance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <div class="sh">
+        <span class="sh-num">02.</span>
+        <h2 class="sh-title">Experience</h2>
+      </div>
+      <div class="exp-wrap">
+        <div class="exp-tablist" role="tablist">
+          <button class="exp-tab on"  data-t="gt"  role="tab">GoTrust</button>
+          <button class="exp-tab"     data-t="rs"  role="tab">RemoteState</button>
+          <button class="exp-tab"     data-t="bu"  role="tab">Bennett Univ.</button>
+        </div>
+        <div style="flex:1; min-width:0;">
+
+          <!-- GoTrust -->
+          <div class="exp-panel on" id="gt">
+            <p class="exp-role">Senior Software Engineer <a href="https://linkedin.com/in/pushpendersharma" target="_blank" rel="noopener">@ GoTrust / AppVin</a></p>
+            <p class="exp-period">Nov 2024 — Present &nbsp;·&nbsp; Noida, UP &nbsp;·&nbsp; Promoted to Senior: May 2025</p>
+            <ul class="exp-bullets">
+              <li>Lead development of internal platforms and AI-powered tools enabling <strong>privacy-first compliance</strong> with India's DPDPA and global data protection regulations.</li>
+              <li>Architect and deliver end-to-end solutions from concept to production — ensuring performance, security, and maintainability at scale.</li>
+              <li>Mentor engineers and influence long-term technical direction across AI-first initiatives: copilots, document intelligence, and automation platforms.</li>
+            </ul>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">GoTrust — Privacy Compliance Platform</p>
+              <p class="exp-proj-desc">Architected core components including interceptors, routing, theming, state management, and DB schema design. Integrated AI-driven guidance and interactive assistants to streamline regulatory workflows for DPDPA compliance.</p>
+              <div class="exp-proj-tags"><span class="tag">React</span><span class="tag">NestJS</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">DLP Pro — Enterprise Data Loss Prevention</p>
+              <p class="exp-proj-desc">Built multi-platform agents (Windows, macOS, Linux, browser) with high-performance backend services enabling <strong>sub-10ms event processing</strong> and real-time policy enforcement across thousands of endpoints. Dockerized the system — cutting deployment time by <strong>80%</strong> and configuration errors by <strong>40%</strong>.</p>
+              <div class="exp-proj-tags"><span class="tag">TypeScript</span><span class="tag">Docker</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">AI Automation Microservice</p>
+              <p class="exp-proj-desc">Architected an AI-powered microservice leveraging a localized LLM via <strong>Ollama</strong> to orchestrate interactions across multiple internal services — delivering production-grade automation and significantly improving system efficiency.</p>
+              <div class="exp-proj-tags"><span class="tag">LLM</span><span class="tag">Ollama</span><span class="tag">Python</span><span class="tag">FastAPI</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">MAIT — AI Contract Analysis (AppVin)</p>
+              <p class="exp-proj-desc">AI-agentic platform for MultiStrat automating contract analysis using retrieval-augmented generation on vector databases and Gemini APIs — reducing manual review effort by <strong>60%</strong> with faster, data-backed legal insights.</p>
+              <div class="exp-proj-tags"><span class="tag">RAG</span><span class="tag">PGVector</span><span class="tag">Gemini API</span><span class="tag">FastAPI</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">SidebarLaw — AI Due Diligence (AppVin)</p>
+              <p class="exp-proj-desc">Led development of an autonomous AI platform reviewing contracts, agreements, and financial documents — projected to cut legal analysis costs by <strong>50%</strong> while improving accuracy and regulatory compliance.</p>
+              <div class="exp-proj-tags"><span class="tag">Next.js</span><span class="tag">LLM</span><span class="tag">Legal-tech</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">VerdeX — B2B Carbon Credit Platform (AppVin)</p>
+              <p class="exp-proj-desc">Mentored the team on RBAC, marketplace features, blockchain integration, audit trails, dispute management, and containerized deployment for a full-stack B2B carbon credit trading platform.</p>
+              <div class="exp-proj-tags"><span class="tag">React</span><span class="tag">Blockchain</span><span class="tag">RBAC</span><span class="tag">Docker</span></div>
+            </div>
+          </div>
+
+          <!-- RemoteState -->
+          <div class="exp-panel" id="rs">
+            <p class="exp-role">Software Development Engineer <a href="https://linkedin.com/in/pushpendersharma" target="_blank" rel="noopener">@ RemoteState</a></p>
+            <p class="exp-period">Jan 2023 — Nov 2024 &nbsp;·&nbsp; Noida, UP</p>
+            <ul class="exp-bullets">
+              <li>Led and contributed to multiple client products across fintech, sustainability, and education — focusing on reliable, scalable delivery.</li>
+              <li>Worked closely with cross-functional teams, debugging complex issues and maintaining high-quality standards across fast-paced projects.</li>
+              <li>Adapted quickly to new codebases and technologies, consistently delivering results under tight timelines.</li>
+            </ul>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">Precium — Financial Platform</p>
+              <p class="exp-proj-desc">Served as tech lead, building impactful React.js features that boosted user engagement — resulting in a <strong>30% increase in new clients</strong> and strengthening the platform's market position.</p>
+              <div class="exp-proj-tags"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">Node.js</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">Circonomy — Sustainability Platform</p>
+              <p class="exp-proj-desc">Spearheaded enhancements to the Next.js website resulting in a <strong>60% increase in visitor traffic</strong> and engagement — substantially growing the platform's digital reach.</p>
+              <div class="exp-proj-tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">SEO</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">Nvest — Backend-Driven App</p>
+              <p class="exp-proj-desc">Built a React.js application where all functionality is centrally controlled from the backend — an architecture designed to enhance security, reduce client-side exposure, and improve operational control.</p>
+              <div class="exp-proj-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">REST APIs</span></div>
+            </div>
+
+            <div class="exp-proj">
+              <p class="exp-proj-name">ux.com.au &amp; Education Planner</p>
+              <p class="exp-proj-desc">Delivered ux.com.au on schedule and contributed to Education Planner — incorporating user feedback to optimize usability, functionality, and overall product quality.</p>
+              <div class="exp-proj-tags"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Go</span></div>
+            </div>
+          </div>
+
+          <!-- Bennett -->
+          <div class="exp-panel" id="bu">
+            <p class="exp-role">Web Development Intern <a href="https://linkedin.com/in/pushpendersharma" target="_blank" rel="noopener">@ Bennett University</a></p>
+            <p class="exp-period">Jun 2022 — Dec 2022 &nbsp;·&nbsp; Greater Noida, UP</p>
+            <ul class="exp-bullets">
+              <li><strong>Lead developer</strong> for the official university cultural festival website — handled everything from design to deployment.</li>
+              <li>Supported multiple student-run clubs building and maintaining their websites, ensuring smooth functionality and modern design.</li>
+              <li>Sharpened frontend development skills and learned effective cross-team collaboration across diverse stakeholder groups.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="sh">
+        <span class="sh-num">03.</span>
+        <h2 class="sh-title">Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div>
+          <p class="sk-cat-name">Languages</p>
+          <ul class="sk-list">
+            <li>JavaScript</li><li>TypeScript</li>
+            <li>Python</li><li>Go</li>
+            <li>C++</li><li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">Frontend</p>
+          <ul class="sk-list">
+            <li>React.js</li><li>Next.js</li>
+            <li>Angular</li><li>Tailwind CSS</li>
+            <li>Redux / Zustand</li><li>Shadcn / MUI</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">Backend</p>
+          <ul class="sk-list">
+            <li>Node.js</li><li>NestJS</li>
+            <li>Express.js</li><li>FastAPI</li>
+            <li>REST APIs</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">AI / Data</p>
+          <ul class="sk-list">
+            <li>LLM / Ollama</li><li>RAG</li>
+            <li>Gemini API</li><li>PGVector</li>
+            <li>Data Analytics</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">Databases</p>
+          <ul class="sk-list">
+            <li>PostgreSQL</li><li>MongoDB</li>
+            <li>MySQL</li><li>SQLite</li>
+            <li>Neo4j</li><li>Vector DBs</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-cat-name">DevOps / Cloud</p>
+          <ul class="sk-list">
+            <li>Docker</li><li>Nginx</li>
+            <li>Git</li><li>Firebase</li>
+            <li>Vercel</li><li>Railway</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <div class="sh">
+        <span class="sh-num">04.</span>
+        <h2 class="sh-title">Education</h2>
+      </div>
+
+      <div class="edu-item">
+        <p class="edu-school">Bennett University</p>
+        <p class="edu-deg">Bachelor of Technology — Computer Science</p>
+        <p class="edu-period">2020 — 2024</p>
+        <p class="edu-note">9.0 CGPA &nbsp;·&nbsp; Academic Scholarship</p>
+      </div>
+
+      <div style="margin-bottom:2.5rem;">
+        <p class="sub-head">Achievements</p>
+        <div class="ach-item">
+          <div>
+            <strong>Design Patent &amp; Trademark — RingQue</strong>
+            <p>Secured a Design Patent and TM ownership for a women's safety gadget, developed as a semester project — covering both design and concept.</p>
+          </div>
+        </div>
+        <div class="ach-item">
+          <div>
+            <strong>SIH National Hackathon</strong>
+            <p>Advanced through the first round of the Smart India Hackathon, clearing the college elimination round in a competitive field.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section style="margin-bottom:2rem;" class="reveal">
+      <div class="sh">
+        <span class="sh-num">05.</span>
+        <h2 class="sh-title">Get In Touch</h2>
+      </div>
+      <p style="font-size:0.92rem;line-height:1.8;max-width:460px;margin-bottom:2rem;">
+        I'm open to full-time roles, freelance projects, and interesting collaborations. My inbox is always open — I'll do my best to get back to you.
+      </p>
+      <a href="mailto:pushpendersharma2019@gmail.com" class="s-btn" style="font-size:0.82rem;padding:0.85rem 1.75rem;">
+        Say Hello &nbsp;→
+      </a>
+    </section>
+
+  </main>
 </div>
 
 <footer>
-    &copy; 2025 Pushpender Sharma. All bugs on this page are intentional features. Probably.
+  <p>Designed &amp; built by <a href="https://github.com/ipushpie" target="_blank" rel="noopener">Pushpender Sharma</a></p>
 </footer>
 
+<script>
+  // Cursor spotlight
+  document.addEventListener('mousemove', e => {
+    document.body.style.setProperty('--cx', e.clientX + 'px');
+    document.body.style.setProperty('--cy', e.clientY + 'px');
+  });
+
+  // Experience tabs
+  document.querySelectorAll('.exp-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('on'));
+      document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('on'));
+      tab.classList.add('on');
+      document.getElementById(tab.dataset.t).classList.add('on');
+    });
+  });
+
+  // Scroll-based active nav
+  const secs = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-l');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('on', l.dataset.s === e.target.id));
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '-5% 0px -65% 0px' });
+  secs.forEach(s => io.observe(s));
+
+  // Reveal on scroll
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // Mobile menu
+  const ham = document.getElementById('ham');
+  const drawer = document.getElementById('drawer');
+  ham.addEventListener('click', () => drawer.classList.toggle('open'));
+  document.querySelectorAll('.dl').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+</script>
 </body>
 </html>
